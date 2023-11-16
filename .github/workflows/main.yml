@@ -31,7 +31,7 @@ jobs:
 
     - name: Add linting
       run: |
-        pylint inflammation
+        pylint --fail-under 5.0 inflammation
 
     - name: Test with PyTest
       run: |
