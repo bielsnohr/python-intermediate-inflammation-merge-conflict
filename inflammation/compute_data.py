@@ -14,7 +14,9 @@ def analyse_data(data_dir):
     Gets all the inflammation csvs within a directory, works out the mean
     inflammation value for each day across all datasets, then graphs the
     standard deviation of these means."""
+    #print("dir:", data_dir)
     data_file_paths = glob.glob(os.path.join(data_dir, 'inflammation*.csv'))
+    #print('path:',data_file_paths)
     if len(data_file_paths) == 0:
         raise ValueError(f"No inflammation csv's found in path {data_dir}")
     data = map(models.load_csv, data_file_paths)
@@ -29,3 +31,5 @@ def analyse_data(data_dir):
         'standard deviation by day': daily_standard_deviation,
     }
     views.visualize(graph_data)
+
+    return daily_standard_deviation
