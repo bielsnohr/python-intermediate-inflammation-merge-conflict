@@ -1,3 +1,4 @@
+# %%
 #!/usr/bin/env python3
 """Software for managing and analysing patients' inflammation data in our imaginary hospital."""
 
@@ -27,13 +28,13 @@ def main(args):
             data_source = CSVDataSource(os.path.dirname(infiles[0]))
         else:
             raise ValueError(f'Unsupported file format {extension}')
-        analyse_data(data_source)
+        data_result = analyse_data(data_source)
         graph_data = {
             'standard deviation by day': data_result,
         }
         views.visualize(graph_data)    
         #analyse_data(os.path.dirname(infiles[0]))
-        return
+    return
 
     for filename in infiles:
         inflammation_data = models.load_csv(filename)
